@@ -2,9 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title>Bugdata Motors • Cars for Rent & Sale</title>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Bugdata Motors • Buy, Sell, Rent Cars</title>
+  <style>
+    :root {
+      --primary: #0a2463;
+      --accent: #0077b6;
+      --highlight: #ffb703;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: url('https://v3b.fal.media/files/f/00b8f57f/2b7d909f5e1d4c0e9a8b7c6d5e4f3a2f4e5d6c7b8a9_4K.jpg') no-repeat center/cover fixed;
+      min-height: 100vh;
+      position: relative;
+      color: #fff;
+    }
+    body::before {
+      content:'';
+      position:absolute; inset:0; background:rgba(0,0,0,0.65); z-index:-1;
+    }
+    header {
+      display:flex; align-items:center; justify-content:space-between; padding:1.5rem 2rem;
+    }
+    h1 { font-size:1.8rem; font-weight:600; text-shadow:0 2px 4px rgba(0,0,0,0.5); }
+    nav a {
+      color:#fff; text-decoration:none; padding:.5rem 1rem; border-radius:4px;
+      background:rgba(255,255,255,0.15); transition:.3s;
+    }
+    nav a:hover { background:rgba(255,255,255,0.3); }
+    main { padding:2rem; max-width:800px; margin:auto; }
+    .search {
+      display:flex; flex-direction:column; gap:1rem;
+      background:rgba(255,255,255,0.95); border-radius:12px; padding:2rem;
+      box-shadow:0 8px 24px rgba(0,0,0,0.4);
+      color:#333;
+    }
+    .search input, .search select {
+      padding:1rem; border:1px solid #ddd; border-radius:6px; font-size:1rem;
+    }
+    .search input:focus, .search select:focus { outline:2px solid var(--accent); }
+    .search button {
+      background:var(--highlight); color:#000; border:none; padding:1rem 2rem;
+      border-radius:6px; font-weight:600; cursor:pointer; transition:.3s;
+    }
+    .search button:hover { background:#ffa600; }
+    .results { margin-top:1.5rem; }
+    .result-card {
+      background:rgba(255,255,255,0.92); border-radius:8px; padding:1.5rem;
+      margin-bottom:1rem; box-shadow:0 4px 12px rgba(0,0,0,0.3); color:#333;
+    }
+    .result-card h3 { color:var(--primary); margin-bottom:.5rem; }
+    .result-card p { color:#666; }
+  </style>
 </head>
 <body>
   <header>
@@ -17,19 +67,23 @@
 
   <main id="browse">
     <section class="search">
-      <input id="q" placeholder="Search by model, make, or location..." />
+      <input id="q" placeholder="🔍 Search by model, make, or location..." />
       <select id="type">
-        <option>Sell Your Car</option>
-        <option>Buy a Car</option>
-        <option>Rent a Car</option>
+        <option value="all">🚗 All Cars</option>
+        <option value="sell">📝 Sell Your Car</option>
+        <option value="buy">➡️ Buy a Car</option>
+        <option value="rent">🚘 Rent a Car</option>
       </select>
-      <button onclick="search()">Search</button>
+      <button onclick="search()">Start Search</button>
     </section>
 
-    <section id="results"></section>
+    <section class="results">
+      <h3>Discover Quality Vehicles</h3>
+      <p>Trust, transparency, and seamless ownership experience.</p>
+      <div id="results-list"></div>
+    </section>
   </main>
 
-  <script src="https://uqwhzflhffwndebgmlu.supabase.co/rest/v1/?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhcndoemZsaGZmd25kZWJnbWx1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcwMTk4ODgsImV4cCI6MjEwMjU5NTg4OH0.Y0SupNuU1v-LQAtO7JaJv33HD9_HtHLlSiyXnp37gv8"></script>
   <script src="api.js"></script>
 </body>
 </html>
