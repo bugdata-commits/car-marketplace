@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Bugdata Motors • Cars for Rent & Sale</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Bugdata Motors</h1>
+    <nav>
+      <a href="#browse">Browse Cars</a>
+      <a href="signup.html">Become a Seller</a>
+    </nav>
+  </header>
+
+  <main id="browse">
+    <section class="search">
+      <input id="q" placeholder="Search by model, make, or location..." />
+      <select id="type">
+        <option>Sell Your Car</option>
+        <option>Buy a Car</option>
+        <option>Rent a Car</option>
+      </select>
+      <button onclick="search()">Search</button>
+    </section>
+
+    <section id="results"></section>
+  </main>
+
+  <script src="https://uqwhzflhffwndebgmlu.supabase.co/rest/v1/?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhcndoemZsaGZmd25kZWJnbWx1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcwMTk4ODgsImV4cCI6MjEwMjU5NTg4OH0.Y0SupNuU1v-LQAtO7JaJv33HD9_HtHLlSiyXnp37gv8"></script>
+  <script src="api.js"></script>
+</body>
+</html>
